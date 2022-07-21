@@ -16,21 +16,19 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
   return {
     base: env.VITE_APP_PUBLIC_PATH,
-
     define: {
       'process.env.VUE_APP_API_BASE_URL': JSON.stringify(env.VITE_APP_API_BASE_URL),
-      'process.env.VUE_APP_PUBLIC_PATH': JSON.stringify(env.VITE_APP_PUBLIC_PATH)
+      'process.env.VUE_APP_PUBLIC_PATH': JSON.stringify(env.VITE_APP_PUBLIC_PATH),
+      'process.env.VUE_APP_API_URL': JSON.stringify(env.VITE_APP_API_URL),
+      'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV)
     },
-
     plugins: [
       vue(),
       vueJsx(),
       visualizer(),
-
       legacy({
         targets: ['defaults', 'not IE 11']
       }),
-
       Components({
         dts: true,
         resolvers: [VantResolver()],
@@ -65,12 +63,12 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       host: true,
       port: 3000,
       proxy: {
-        '/api': {
-          // backend url
-          target: env.VITE_HTTP_MOCK && env.VITE_MOCK ? createMockServer() : '',
-          ws: false,
-          changeOrigin: true
-        }
+        // '/api': {
+        //   // backend url
+        //   target: env.VITE_HTTP_MOCK && env.VITE_MOCK ? createMockServer() : '',
+        //   ws: false,
+        //   changeOrigin: true
+        // }
       }
     }
   }

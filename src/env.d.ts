@@ -6,3 +6,9 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare const Encryption: any
+
+declare module 'vue-pdf' {
+  export default any
+}

@@ -1,6 +1,6 @@
 export interface ResponseBody<T = any> {
   message: string;
-  code: number;
+  code: string;
   data?: T | T[];
 }
 

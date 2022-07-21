@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
-
+import './styles/vant'
 import './app.less'
 
 // Vant 桌面端适配

@@ -1,5 +1,5 @@
 // https://router.vuejs.org/zh/
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 NProgress.configure({ showSpinner: true })
@@ -18,12 +18,27 @@ const routes = [
     path: '/mock',
     name: 'mock',
     component: mock
+  },
+  {
+    path: '/onlinesign',
+    name: 'onlinesign',
+    component: () => import('@/views/legalPersonStep1/index.vue')
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: () => import('@/views/legalPersonAuth/index.vue')
+  },
+  {
+    path: '/sign',
+    name: 'sign',
+    component: () => import('@/views/legalPersonSign/index.vue')
   }
 ]
 
 // 创建路由实例并传递 `routes` 配置
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
   scrollBehavior() {
     // 始终滚动到顶部

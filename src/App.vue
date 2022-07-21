@@ -1,5 +1,5 @@
 <template>
-  <van-config-provider :theme="theme">
+  <van-config-provider :theme-vars="themeVars" :theme="theme">
     <router-view />
   </van-config-provider>
 </template>
@@ -8,12 +8,13 @@
 import { ref, computed, watch } from 'vue'
 import type { ConfigProviderTheme } from 'vant'
 import { localStorage } from '@/utils/local-storage'
-import { useStore } from '@/stores'
+import { useStore, useThemeStore } from '@/stores'
 
 const store = useStore()
 const theme = ref<ConfigProviderTheme>('light')
 const mode = computed(() => store.mode)
-
+const themeStore = useThemeStore()
+const themeVars = computed(() => themeStore.theme)
 watch(mode, (val) => {
   if(val === 'dark' || localStorage.get('theme') === 'dark') {
     theme.value = 'dark'
